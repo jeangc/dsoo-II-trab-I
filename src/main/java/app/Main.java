@@ -5,9 +5,6 @@ import app.view.list.CarsList;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class Main {
     // and "GTK"
@@ -16,24 +13,11 @@ public class Main {
     public static void main(String[] args) {
         initLookAndFeel();
 
-        Connection connection = DatabaseConnection.getDefaultConnection();
-
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT teste FROM teste");
-
-            while (resultSet.next()) {
-                System.out.println("COLUNA:" + resultSet.getString("teste"));
-            }
-        } catch (Exception e) {
-
-        }
-
         JFrame frame = new JFrame("teste");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(200, 200));
         frame.setContentPane(new CarsList().getContainer());
         frame.pack();
-        frame.setMinimumSize(new Dimension(200, 200));
         frame.setVisible(true);
 
         DatabaseConnection.closeDefaultConnection();
