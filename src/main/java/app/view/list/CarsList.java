@@ -1,6 +1,6 @@
 package app.view.list;
 
-import app.database.DatabaseConnection;
+import app.DatabaseConnection;
 import app.view.Renderable;
 
 import javax.swing.*;
