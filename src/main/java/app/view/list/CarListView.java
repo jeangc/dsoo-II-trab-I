@@ -5,29 +5,40 @@ import app.view.Renderable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarListView implements Renderable {
     private JPanel panel;
-    private JTable table;
-    private JButton add;
+    private JTable carTable;
+    private JButton addButton;
 
-    public CarListView(List<CarModel> cars) {
-        DefaultTableModel model;
+    private DefaultTableModel tableModel;
 
-        model = new DefaultTableModel();
-        model.addColumn("Placa");
+    public CarListView() {
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Placa");
+
+        this.carTable.setModel(tableModel);
+    }
+
+    public void load(List<CarModel> cars) {
+        tableModel.setRowCount(0);
 
         for (CarModel car: cars) {
-            model.addRow(new String[]{ car.getPlaca() });
+            tableModel.addRow(new String[]{ car.getPlaca() });
         }
-
-        this.table.setModel(model);
     }
 
     public Container getContainer() {
         return this.panel;
     }
 
+    public JButton getAddButton() {
+        return addButton;
+    }
 }

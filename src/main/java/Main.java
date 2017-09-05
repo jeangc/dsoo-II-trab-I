@@ -10,7 +10,7 @@ public class Main {
         initLookAndFeel();
         initFrames();
 
-        new CarsListController().open();
+        new CarsListController().openList();
     }
 
     private static void initFrames() {
