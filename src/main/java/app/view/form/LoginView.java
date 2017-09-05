@@ -1,4 +1,4 @@
 package app.view.form;
 
-public class Login {
+public class LoginView {
 }

@@ -1,6 +1,5 @@
-import app.DatabaseConnection;
 import app.FrameManager;
-import app.view.list.CarsList;
+import app.view.list.CarsListView;
 
 import javax.swing.*;
 
@@ -11,7 +10,7 @@ public class Main {
         initLookAndFeel();
 
         FrameManager.setFrameTitlePrefix("Sistema AUTO - ");
-        FrameManager.showIntoNewFrame(new CarsList().getContainer());
+        FrameManager.showIntoNewFrame(new CarsListView().getContainer());
     }
 
     private static void initLookAndFeel() {

@@ -10,12 +10,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class CarsList implements Renderable {
+public class CarsListView implements Renderable {
     private JPanel panel;
     private JTable table;
     private JButton add;
 
-    public CarsList() {
+    public CarsListView() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Coluna");
 
