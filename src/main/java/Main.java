@@ -1,5 +1,5 @@
 import app.FrameManager;
-import app.view.list.CarsListView;
+import app.controller.CarsListController;
 
 import javax.swing.*;
 
@@ -8,9 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         initLookAndFeel();
+        initFrames();
 
+        new CarsListController().open();
+    }
+
+    private static void initFrames() {
         FrameManager.setFrameTitlePrefix("Sistema AUTO - ");
-        FrameManager.showIntoNewFrame(new CarsListView().getContainer());
     }
 
     private static void initLookAndFeel() {
