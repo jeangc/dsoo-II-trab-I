@@ -5,3 +5,10 @@ O projeto foi feito usando maven, para rodá-lo, executar a seguinte linha no te
 ```bash
 mvn compile && mvn exec:java
 ```
+
+
+Se após rodar o projeto algumas vezes ele acabar dando problema com NullPointer, rodar o código abaixo
+
+```bash
+mvn clean && mvn install && mvn compile && mvn exec:java
+```
