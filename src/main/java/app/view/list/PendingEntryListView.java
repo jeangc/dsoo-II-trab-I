@@ -6,7 +6,6 @@ import app.table.EntryTableDataModel;
 import app.view.Renderable;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -26,9 +25,14 @@ public class PendingEntryListView implements Renderable {
     }
 
     public EntryEntity getSelectedEntry() {
-        return (EntryEntity) tableModel.getEntity(
-                pendingEntryTable.getSelectedRow()
-        );
+        int selectedRow = pendingEntryTable.getSelectedRow();
+        int rowCount = tableModel.getRowCount();
+
+        if (selectedRow == -1 || selectedRow >= rowCount) {
+            return null;
+        }
+
+        return (EntryEntity) tableModel.getEntity(selectedRow);
     }
 
     public void addEntrySelectListener(MouseAdapter mouseAdapter) {

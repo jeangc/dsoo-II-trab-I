@@ -44,6 +44,10 @@ public class EntryControlController {
     private void startEditEntryPage() {
         EntryEntity entry = list.getSelectedEntry();
 
+        if (entry == null) {
+           return;
+        }
+
         billingForm = new EntryBillingFormView(entry);
         billingForm.addSaveButtonClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent clickTime) {
