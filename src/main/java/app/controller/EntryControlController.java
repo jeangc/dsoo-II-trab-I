@@ -1,57 +1,77 @@
 package app.controller;
 
 import app.FrameManager;
-import app.model.CarEntryModel;
-import app.repository.CarEntryRepository;
+import app.model.EntryModel;
+import app.repository.EntryRepository;
+import app.view.form.EntryBillingFormView;
 import app.view.form.NewEntryFormView;
 import app.view.list.PendingEntryListView;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class EntryControlController {
     private PendingEntryListView list;
-    private CarEntryRepository entryRepository;
+    private NewEntryFormView newForm;
+    private EntryBillingFormView billingForm;
+    private EntryRepository entryRepository;
 
     public EntryControlController() {
-        this.entryRepository = new CarEntryRepository();
+        this.entryRepository = new EntryRepository();
     }
 
     public void startControlPage() {
         createPendingList();
         loadPendingList();
-        FrameManager.showIntoNewFrame(list.getContainer(), "Entradas pendentes");
+        FrameManager.showIntoMainFrame(list, "Entradas pendentes");
     }
 
-    private void startEntryPage() {
-        NewEntryFormView form = new NewEntryFormView();
+    private void startNewEntryPage() {
+        newForm = new NewEntryFormView();
+        newForm.addSaveButtonClickListener(new ActionListener() {
+            public void actionPerformed(ActionEvent clickTime)  {
+                entryRepository.create(newForm.getEntry());
+                loadPendingList();
+            }
+        });
 
-        FrameManager.showIntoNewFrame(form.getContainer());
-//        CarEntryModel car = new CarEntryModel();
-//        car.setPlaca("Teste");
-//
-//        entryRepository.create(car);
-//        loadPendingList();
+        JFrame frame;
+        frame = FrameManager.showIntoNewFrame(newForm, "Nova entrada", new Dimension(300, 100));
+        frame.setResizable(false);
+    }
+
+    private void startEditEntryPage() {
+        EntryModel entry = list.getSelectedEntry();
+
+        billingForm = new EntryBillingFormView(entry);
+        billingForm.addSaveButtonClickListener(new ActionListener() {
+            public void actionPerformed(ActionEvent clickTime)  {
+//                entryRepository.create(form.getEntry());
+//                loadPendingList();
+            }
+        });
+
+        JFrame frame;
+        frame = FrameManager.showIntoNewFrame(billingForm, "Fechamento");
+        frame.setResizable(false);
     }
 
     private void createPendingList() {
         list = new PendingEntryListView();
-        list.getAddButton().addActionListener(new onAddEntryButtonClick());
-        list.getPendingEntryList().addMouseListener(new onEntrySelect());
+        list.addAddNewListener(new ActionListener() {
+            public void actionPerformed(ActionEvent clickTime)  {
+                startNewEntryPage();
+            }
+        });
+        list.addEntrySelectListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                startEditEntryPage();
+            }
+        });
     }
 
     private void loadPendingList() {
         list.load(entryRepository.getAll());
-    }
-
-    private class onAddEntryButtonClick implements ActionListener {
-        public void actionPerformed(ActionEvent clickTime)  {
-            startEntryPage();
-        }
-    }
-
-    private class onEntrySelect extends MouseAdapter {
-        public void mouseClicked(MouseEvent e) {
-            startEntryPage();
-        }
     }
 }

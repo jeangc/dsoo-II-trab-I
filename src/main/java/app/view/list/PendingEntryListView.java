@@ -1,12 +1,14 @@
 package app.view.list;
 
-import app.model.CarEntryModel;
+import app.model.EntryModel;
 import app.view.Renderable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.List;
 
 public class PendingEntryListView implements Renderable {
@@ -23,24 +25,31 @@ public class PendingEntryListView implements Renderable {
             }
         };
         tableModel.addColumn("Placa");
+        tableModel.addColumn("Horário de chagada");
 
-        this.pendingEntryTable.setModel(tableModel);
+        pendingEntryTable.setModel(tableModel);
     }
 
-    public void load(List<CarEntryModel> cars) {
+    public void load(List<EntryModel> cars) {
         tableModel.setRowCount(0);
 
-        for (CarEntryModel car: cars) {
+        for (EntryModel car: cars) {
             tableModel.addRow(new String[]{ car.getPlaca() });
         }
     }
 
-    public JButton getAddButton() {
-        return addButton;
+    public EntryModel getSelectedEntry() {
+        return (EntryModel) tableModel.getDataVector().elementAt(
+                pendingEntryTable.getSelectedRow()
+        );
     }
 
-    public JTable getPendingEntryList() {
-        return pendingEntryTable;
+    public void addEntrySelectListener(MouseAdapter mouseAdapter) {
+        pendingEntryTable.addMouseListener(mouseAdapter);
+    }
+
+    public void addAddNewListener(ActionListener listener) {
+        addButton.addActionListener(listener);
     }
 
     public Container getContainer() {

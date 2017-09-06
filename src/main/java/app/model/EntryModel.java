@@ -1,6 +1,6 @@
 package app.model;
 
-public class CarEntryModel {
+public class EntryModel {
     private String placa;
 
     public String getPlaca() {

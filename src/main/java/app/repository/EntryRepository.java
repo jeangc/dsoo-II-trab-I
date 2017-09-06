@@ -1,14 +1,14 @@
 package app.repository;
 
-import app.model.CarEntryModel;
+import app.model.EntryModel;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarEntryRepository extends AbstractRepository {
-    public void create(CarEntryModel car) {
+public class EntryRepository extends AbstractRepository {
+    public void create(EntryModel car) {
         try {
             Statement statement = getConnection().createStatement();
             statement.execute("INSERT INTO TESTE (TESTE) VALUES ('" + car.getPlaca() + "')");
@@ -18,15 +18,15 @@ public class CarEntryRepository extends AbstractRepository {
 
     }
 
-    public List<CarEntryModel> getAll() {
-        List<CarEntryModel> cars = new ArrayList<CarEntryModel>();
+    public List<EntryModel> getAll() {
+        List<EntryModel> cars = new ArrayList<EntryModel>();
 
         try {
             Statement statement = getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT TESTE FROM TESTE");
 
             while (resultSet.next()) {
-                CarEntryModel car = new CarEntryModel();
+                EntryModel car = new EntryModel();
                 car.setPlaca(resultSet.getString("teste"));
                 cars.add(car);
             }

@@ -7,16 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class NewEntryFormView implements Renderable {
+public class EntryBillingFormView implements Renderable {
     private JPanel panel;
-    private JTextField placa;
     private JButton saveButton;
 
-    public EntryModel getEntry() {
-        EntryModel model = new EntryModel();
-        model.setPlaca(placa.getText());
+    public EntryBillingFormView(EntryModel entry) {
 
-        return model;
     }
 
     public Container getContainer() {
@@ -26,4 +22,5 @@ public class NewEntryFormView implements Renderable {
     public void addSaveButtonClickListener(ActionListener listener) {
         saveButton.addActionListener(listener);
     }
+
 }
