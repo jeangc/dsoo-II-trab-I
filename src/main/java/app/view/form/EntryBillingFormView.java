@@ -1,6 +1,6 @@
 package app.view.form;
 
-import app.model.EntryModel;
+import app.entity.EntryEntity;
 import app.view.Renderable;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class EntryBillingFormView implements Renderable {
     private JPanel panel;
     private JButton saveButton;
 
-    public EntryBillingFormView(EntryModel entry) {
+    public EntryBillingFormView(EntryEntity entry) {
 
     }
 

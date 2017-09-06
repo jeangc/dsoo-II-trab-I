@@ -1,6 +1,6 @@
 package app.repository;
 
-import app.model.EntryModel;
+import app.entity.EntryEntity;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntryRepository extends AbstractRepository {
-    public void create(EntryModel car) {
+    public void create(EntryEntity car) {
         try {
             Statement statement = getConnection().createStatement();
             statement.execute("INSERT INTO TESTE (TESTE) VALUES ('" + car.getPlaca() + "')");
@@ -18,15 +18,15 @@ public class EntryRepository extends AbstractRepository {
 
     }
 
-    public List<EntryModel> getAll() {
-        List<EntryModel> cars = new ArrayList<EntryModel>();
+    public List<EntryEntity> getAll() {
+        List<EntryEntity> cars = new ArrayList<EntryEntity>();
 
         try {
             Statement statement = getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT TESTE FROM TESTE");
 
             while (resultSet.next()) {
-                EntryModel car = new EntryModel();
+                EntryEntity car = new EntryEntity();
                 car.setPlaca(resultSet.getString("teste"));
                 cars.add(car);
             }

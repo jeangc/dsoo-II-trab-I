@@ -1,10 +1,12 @@
 package app.view.list;
 
-import app.model.EntryModel;
+import app.entity.EntryEntity;
+import app.table.AbstractEntityTableDataModel;
+import app.table.EntryTableDataModel;
 import app.view.Renderable;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -16,30 +18,15 @@ public class PendingEntryListView implements Renderable {
     private JButton addButton;
     private JTable pendingEntryTable;
 
-    private DefaultTableModel tableModel;
+    private AbstractEntityTableDataModel tableModel;
 
-    public PendingEntryListView() {
-        tableModel = new DefaultTableModel() {
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        tableModel.addColumn("Placa");
-        tableModel.addColumn("Horário de chagada");
-
+    public void load(List<EntryEntity> cars) {
+        tableModel = new EntryTableDataModel(cars);
         pendingEntryTable.setModel(tableModel);
     }
 
-    public void load(List<EntryModel> cars) {
-        tableModel.setRowCount(0);
-
-        for (EntryModel car: cars) {
-            tableModel.addRow(new String[]{ car.getPlaca() });
-        }
-    }
-
-    public EntryModel getSelectedEntry() {
-        return (EntryModel) tableModel.getDataVector().elementAt(
+    public EntryEntity getSelectedEntry() {
+        return (EntryEntity) tableModel.getEntity(
                 pendingEntryTable.getSelectedRow()
         );
     }

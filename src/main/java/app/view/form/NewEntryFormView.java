@@ -1,6 +1,6 @@
 package app.view.form;
 
-import app.model.EntryModel;
+import app.entity.EntryEntity;
 import app.view.Renderable;
 
 import javax.swing.*;
@@ -12,8 +12,8 @@ public class NewEntryFormView implements Renderable {
     private JTextField placa;
     private JButton saveButton;
 
-    public EntryModel getEntry() {
-        EntryModel model = new EntryModel();
+    public EntryEntity getEntry() {
+        EntryEntity model = new EntryEntity();
         model.setPlaca(placa.getText());
 
         return model;

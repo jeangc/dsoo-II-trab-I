@@ -48,7 +48,7 @@ public class FrameManager {
     }
     
     static private JFrame showFrame(JFrame frame, String t, Renderable r) {
-        return showFrame(frame, t, r, new Dimension(300, 300));
+        return showFrame(frame, t, r, new Dimension(500, 250));
     }
     
     static private JFrame showFrame(JFrame frame, String t, Renderable r, Dimension d) {
@@ -71,7 +71,7 @@ public class FrameManager {
     static private JFrame createFrame() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+        frame.setLocationByPlatform(true);
         frame.pack();
         frame.setVisible(true);
 

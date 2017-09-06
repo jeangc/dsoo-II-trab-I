@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.FrameManager;
-import app.model.EntryModel;
+import app.entity.EntryEntity;
 import app.repository.EntryRepository;
 import app.view.form.EntryBillingFormView;
 import app.view.form.NewEntryFormView;
@@ -42,12 +42,12 @@ public class EntryControlController {
     }
 
     private void startEditEntryPage() {
-        EntryModel entry = list.getSelectedEntry();
+        EntryEntity entry = list.getSelectedEntry();
 
         billingForm = new EntryBillingFormView(entry);
         billingForm.addSaveButtonClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent clickTime)  {
-//                entryRepository.create(form.getEntry());
+//                entryRepository.create(billingForm.getEntry());
 //                loadPendingList();
             }
         });
