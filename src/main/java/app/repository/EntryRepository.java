@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntryRepository extends AbstractRepository {
+
     public void create(EntryEntity car) {
         try {
             Statement statement = getConnection().createStatement();
-            statement.execute("INSERT INTO ENTRIES (PLACA, ENTRADA) VALUES ('" + car.getPlaca() + "', now())");
+            statement.execute("INSERT INTO ENTRIES (placa, entrada) VALUES ('" + car.getPlaca() + "', CURRENT_TIMESTAMP)");
         } catch (Exception e) {
-            //
+            e.printStackTrace();
         }
-
     }
 
     public List<EntryEntity> getAll() {
@@ -23,16 +23,20 @@ public class EntryRepository extends AbstractRepository {
 
         try {
             Statement statement = getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT PLACA, ENTRADA FROM ENTRIES");
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT id, placa, entrada, saida FROM ENTRIES"
+                );
 
             while (resultSet.next()) {
                 EntryEntity car = new EntryEntity();
-                car.setPlaca(resultSet.getString("PLACA"));
-                car.setEntrada(resultSet.getString("ENTRADA"));
+                car.setId(resultSet.getInt("id"));
+                car.setPlaca(resultSet.getString("placa"));
+                car.setEntrada(resultSet.getTimestamp("entrada"));
+                car.setSaida(resultSet.getTimestamp("saida"));
                 cars.add(car);
             }
         } catch (Exception e) {
-            //
+            e.printStackTrace();
         }
 
         return cars;

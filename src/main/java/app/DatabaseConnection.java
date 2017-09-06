@@ -45,13 +45,15 @@ public class DatabaseConnection {
             Statement statement1 = c.createStatement();
             statement1.execute(
                     "CREATE TABLE ENTRIES (" +
-                            "id INT PRIMARY KEY, " +
-                            "placa VARCHAR (255), " +
-                            "entrada TIMESTAMP, " +
-                            "saida TIMESTAMP" +
+                            "id INT not null primary key " +
+                                " GENERATED ALWAYS AS IDENTITY " +
+                                " (START WITH 1, INCREMENT BY 1), " +
+                            "placa VARCHAR (255) DEFAULT NULL, " +
+                            "entrada TIMESTAMP DEFAULT NULL, " +
+                            "saida TIMESTAMP DEFAULT NULL" +
                             ")");
         } catch (Exception e) {
-            // já existem as tabelas
+            e.printStackTrace();
         }
     }
 }
