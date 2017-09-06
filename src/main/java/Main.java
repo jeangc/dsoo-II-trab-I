@@ -1,5 +1,5 @@
 import app.FrameManager;
-import app.controller.CarsListController;
+import app.controller.EntryControlController;
 
 import javax.swing.*;
 
@@ -10,7 +10,7 @@ public class Main {
         initLookAndFeel();
         initFrames();
 
-        new CarsListController().openList();
+        new EntryControlController().startControlPage();
     }
 
     private static void initFrames() {

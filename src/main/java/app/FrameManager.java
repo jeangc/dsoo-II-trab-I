@@ -53,7 +53,8 @@ public class FrameManager {
 
     static private JFrame createFrame() {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setMinimumSize(new Dimension(300, 300));
         frame.pack();
         frame.setVisible(true);
