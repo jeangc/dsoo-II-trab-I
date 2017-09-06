@@ -1,8 +1,8 @@
 package app.view.list;
 
 import app.entity.EntryEntity;
-import app.table.AbstractEntityTableDataModel;
-import app.table.EntryTableDataModel;
+import app.view.table.AbstractEntityTableDataModel;
+import app.view.table.EntryTableDataModel;
 import app.view.Renderable;
 
 import javax.swing.*;
@@ -35,12 +35,12 @@ public class PendingEntryListView implements Renderable {
         return (EntryEntity) tableModel.getEntity(selectedRow);
     }
 
-    public void addEntrySelectListener(MouseAdapter mouseAdapter) {
-        pendingEntryTable.addMouseListener(mouseAdapter);
-    }
-
     public void addAddNewListener(ActionListener listener) {
         addButton.addActionListener(listener);
+    }
+
+    public void addEntrySelectListener(MouseAdapter mouseAdapter) {
+        pendingEntryTable.addMouseListener(mouseAdapter);
     }
 
     public Container getContainer() {

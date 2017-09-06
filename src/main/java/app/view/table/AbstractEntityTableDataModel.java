@@ -1,4 +1,4 @@
-package app.table;
+package app.view.table;
 
 import app.entity.IStringArrayConvertible;
 

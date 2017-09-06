@@ -1,5 +1,6 @@
 import app.FrameManager;
 import app.controller.EntryControlController;
+import app.entity.Settings;
 
 import javax.swing.*;
 
@@ -9,8 +10,19 @@ public class Main {
     public static void main(String[] args) {
         initLookAndFeel();
         initFrames();
+        initSettingsMock();
 
         new EntryControlController().startControlPage();
+    }
+
+    private static void initSettingsMock() {
+        Settings t = Settings.getInstance();
+
+        t.setToleranciaMinutos(5);
+        t.setPeriodoMinutos(10);
+        t.setValorPeriodo(2);
+        t.setPeriodoInicialMinutos(30);
+        t.setValorInicial(3);
     }
 
     private static void initFrames() {

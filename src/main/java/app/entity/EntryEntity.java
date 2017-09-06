@@ -11,6 +11,9 @@ public class EntryEntity implements IStringArrayConvertible {
     private Timestamp entrada;
     private Timestamp saida;
 
+    private float tempoTotal;
+    private float valorTotal;
+
     public int getId() {
         return id;
     }
@@ -41,6 +44,22 @@ public class EntryEntity implements IStringArrayConvertible {
 
     public void setSaida(Timestamp saida) {
         this.saida = saida;
+    }
+
+    public float getTempoTotal() {
+        return tempoTotal;
+    }
+
+    public void setTempoTotal(float tempoTotal) {
+        this.tempoTotal = tempoTotal;
+    }
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public List<String> asArrayList() {

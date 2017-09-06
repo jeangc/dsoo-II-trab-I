@@ -1,4 +1,4 @@
-package app.table;
+package app.view.table;
 
 
 import app.entity.EntryEntity;
@@ -14,6 +14,6 @@ public class EntryTableDataModel extends AbstractEntityTableDataModel {
     }
 
     public String[] getColumns() {
-        return new String[]{"Placa", "Horário de chagada"};
+        return new String[]{"Placa", "Horário de chegada"};
     }
 }
