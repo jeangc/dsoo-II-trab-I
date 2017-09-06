@@ -46,7 +46,8 @@ public class EntryControlController {
 
         billingForm = new EntryBillingFormView(entry);
         billingForm.addSaveButtonClickListener(new ActionListener() {
-            public void actionPerformed(ActionEvent clickTime)  {
+            public void actionPerformed(ActionEvent clickTime) {
+                System.out.println(billingForm.getEntry());
 //                entryRepository.create(billingForm.getEntry());
 //                loadPendingList();
             }

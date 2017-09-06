@@ -10,10 +10,18 @@ import java.awt.event.ActionListener;
 public class EntryBillingFormView implements Renderable {
     private JPanel panel;
     private JButton saveButton;
+    private EntryEntity entry;
 
     public EntryBillingFormView(EntryEntity entry) {
-
+        this.entry = entry;
     }
+
+    public EntryEntity getEntry() {
+//        entry.setPlaca(.getText());
+
+        return entry;
+    }
+
 
     public Container getContainer() {
         return this.panel;
