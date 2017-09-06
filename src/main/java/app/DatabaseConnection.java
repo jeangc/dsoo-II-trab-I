@@ -43,9 +43,15 @@ public class DatabaseConnection {
     {
         try {
             Statement statement1 = c.createStatement();
-            statement1.execute("CREATE TABLE teste (teste VARCHAR (255))");
+            statement1.execute(
+                    "CREATE TABLE ENTRIES (" +
+                            "id INT PRIMARY KEY, " +
+                            "placa VARCHAR (255), " +
+                            "entrada TIMESTAMP, " +
+                            "saida TIMESTAMP" +
+                            ")");
         } catch (Exception e) {
-            //whatever
+            // já existem as tabelas
         }
     }
 }

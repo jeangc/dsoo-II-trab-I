@@ -11,7 +11,7 @@ public class EntryRepository extends AbstractRepository {
     public void create(EntryEntity car) {
         try {
             Statement statement = getConnection().createStatement();
-            statement.execute("INSERT INTO TESTE (TESTE) VALUES ('" + car.getPlaca() + "')");
+            statement.execute("INSERT INTO ENTRIES (PLACA, ENTRADA) VALUES ('" + car.getPlaca() + "', now())");
         } catch (Exception e) {
             //
         }
@@ -23,11 +23,12 @@ public class EntryRepository extends AbstractRepository {
 
         try {
             Statement statement = getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT TESTE FROM TESTE");
+            ResultSet resultSet = statement.executeQuery("SELECT PLACA, ENTRADA FROM ENTRIES");
 
             while (resultSet.next()) {
                 EntryEntity car = new EntryEntity();
-                car.setPlaca(resultSet.getString("teste"));
+                car.setPlaca(resultSet.getString("PLACA"));
+                car.setEntrada(resultSet.getString("ENTRADA"));
                 cars.add(car);
             }
         } catch (Exception e) {
