@@ -8,9 +8,9 @@ Período adicional: intervalo de tempo considerado para tarifação após o per�
 Valor adicional: valor pago por cada período adicional de permanência.
  */
 
-public class Settings {
+public class SettingsEntity {
 
-    private static Settings instance;
+    private static SettingsEntity instance;
 
     private int toleranciaMinutos;
     private int periodoInicialMinutos;
@@ -18,9 +18,9 @@ public class Settings {
     private int periodoMinutos;
     private float valorPeriodo;
 
-    static public Settings getInstance() {
+    static public SettingsEntity getInstance() {
         if (instance == null) {
-            instance = new Settings();
+            instance = new SettingsEntity();
         }
 
         return instance;

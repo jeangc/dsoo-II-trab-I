@@ -3,7 +3,7 @@ package app.controller;
 import app.FrameManager;
 import app.component.EntryTotalPriceCalculator;
 import app.entity.EntryEntity;
-import app.entity.Settings;
+import app.entity.SettingsEntity;
 import app.repository.EntryRepository;
 import app.view.form.EntryBillingFormView;
 import app.view.form.NewEntryFormView;
@@ -39,7 +39,7 @@ public class EntryControlController {
         });
 
         JFrame frame;
-        frame = FrameManager.showIntoNewFrame(newForm, "Nova entrada", new Dimension(300, 50));
+        frame = FrameManager.showIntoNewFrame(newForm, "Nova entrada", new Dimension(300, 100));
         frame.setResizable(false);
     }
 
@@ -50,7 +50,7 @@ public class EntryControlController {
            return;
         }
 
-        EntryTotalPriceCalculator.calculate(Settings.getInstance(), entry);
+        EntryTotalPriceCalculator.calculate(SettingsEntity.getInstance(), entry);
 
         billingForm = new EntryBillingFormView(entry);
         billingForm.addSaveButtonClickListener(new ActionListener() {
@@ -61,7 +61,7 @@ public class EntryControlController {
         });
 
         JFrame frame;
-        frame = FrameManager.showIntoNewFrame(billingForm, "Fechamento", new Dimension(500, 200));
+        frame = FrameManager.showIntoNewFrame(billingForm, "Fechamento", new Dimension(500, 150));
         frame.setResizable(false);
     }
 

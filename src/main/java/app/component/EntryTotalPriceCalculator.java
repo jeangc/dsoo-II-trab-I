@@ -1,19 +1,19 @@
 package app.component;
 
 import app.entity.EntryEntity;
-import app.entity.Settings;
+import app.entity.SettingsEntity;
 
 import java.sql.Timestamp;
 
 public class EntryTotalPriceCalculator {
-    static public void calculate(Settings s, EntryEntity entry) {
+    static public void calculate(SettingsEntity s, EntryEntity entry) {
         float t = getPassedMinutes(entry.getEntrada());
 
         entry.setTempoTotal(t);
         entry.setValorTotal(calculateValue(s, t));
     }
 
-    static private float calculateValue(Settings s, float t) {
+    static private float calculateValue(SettingsEntity s, float t) {
         if (t <= s.getToleranciaMinutos()) {
             return 0;
         }

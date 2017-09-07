@@ -1,8 +1,10 @@
 import app.FrameManager;
 import app.controller.EntryControlController;
-import app.entity.Settings;
+import app.entity.SettingsEntity;
+import app.view.form.SettingsFormView;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     final static private String LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
@@ -16,12 +18,12 @@ public class Main {
     }
 
     private static void initSettingsMock() {
-        Settings t = Settings.getInstance();
+        SettingsEntity t = SettingsEntity.getInstance();
 
         t.setToleranciaMinutos(5);
-        t.setPeriodoMinutos(10);
+        t.setPeriodoMinutos(1);
         t.setValorPeriodo(2);
-        t.setPeriodoInicialMinutos(30);
+        t.setPeriodoInicialMinutos(10);
         t.setValorInicial(3);
     }
 

@@ -27,7 +27,6 @@ public class EntryBillingFormView implements Renderable {
         return entry;
     }
 
-
     public Container getContainer() {
         return this.panel;
     }
