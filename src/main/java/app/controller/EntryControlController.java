@@ -16,7 +16,6 @@ import java.awt.event.*;
 public class EntryControlController {
     private PendingEntryListView list;
     private NewEntryFormView newForm;
-    private EntryBillingFormView billingForm;
     private EntryRepository entryRepository;
 
     public EntryControlController() {
@@ -52,16 +51,8 @@ public class EntryControlController {
 
         EntryTotalPriceCalculator.calculate(SettingsEntity.getInstance(), entry);
 
-        billingForm = new EntryBillingFormView(entry);
-        billingForm.addSaveButtonClickListener(new ActionListener() {
-            public void actionPerformed(ActionEvent clickTime) {
-                //entryRepository.create(billingForm.getEntry());
-                //loadPendingList();
-            }
-        });
-
         JFrame frame;
-        frame = FrameManager.showIntoNewFrame(billingForm, "Fechamento", new Dimension(500, 150));
+        frame = FrameManager.showIntoNewFrame(new EntryBillingFormView(entry), "Fechamento", new Dimension(500, 150));
         frame.setResizable(false);
     }
 
