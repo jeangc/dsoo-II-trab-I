@@ -1,10 +1,8 @@
 import app.FrameManager;
 import app.controller.EntryControlController;
 import app.entity.SettingsEntity;
-import app.view.form.SettingsFormView;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
     final static private String LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
@@ -14,7 +12,8 @@ public class Main {
         initFrames();
         initSettingsMock();
 
-        new EntryControlController().startControlPage();
+        EntryControlController c = new EntryControlController();
+        c.startControlPage();
     }
 
     private static void initSettingsMock() {
