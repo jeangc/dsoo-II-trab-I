@@ -56,7 +56,8 @@ public class FrameManager {
         frame.setContentPane(r.getContainer());
         frame.setSize(d);
         frame.setMinimumSize(d);
-        
+        frame.pack();
+        frame.setVisible(true);
         return frame;
     }
 
@@ -72,9 +73,6 @@ public class FrameManager {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setLocationByPlatform(true);
-        frame.pack();
-        frame.setVisible(true);
-
         return frame;
     }
 }
