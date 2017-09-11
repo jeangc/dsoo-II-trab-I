@@ -1,5 +1,5 @@
 import app.FrameManager;
-import app.controller.EntryControlController;
+import app.controller.MainController;
 import app.entity.SettingsEntity;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ public class Main {
         initFrames();
         initSettingsMock();
 
-        EntryControlController c = new EntryControlController();
+        MainController c = new MainController();
         c.startControlPage();
     }
 

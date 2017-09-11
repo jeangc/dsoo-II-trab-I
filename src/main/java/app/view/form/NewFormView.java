@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class NewEntryFormView implements Renderable {
+public class NewFormView implements Renderable {
     private JPanel panel;
     private JTextField placa;
     private JButton saveButton;
