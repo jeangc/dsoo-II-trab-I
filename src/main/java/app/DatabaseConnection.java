@@ -53,7 +53,7 @@ public class DatabaseConnection {
                             "saida TIMESTAMP DEFAULT NULL" +
                             ")");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Não consegui criar a tabela, provavelmente já existe: " + e.getMessage());
         }
     }
 }
