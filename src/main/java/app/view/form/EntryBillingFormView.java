@@ -10,7 +10,6 @@ import java.util.Locale;
 
 public class EntryBillingFormView implements Renderable {
     private JPanel panel;
-    private JButton saveButton;
     private JTextPane totalValue;
     private JLabel totalLabel;
     private JLabel tempoLabel;
@@ -29,9 +28,5 @@ public class EntryBillingFormView implements Renderable {
 
     public Container getContainer() {
         return this.panel;
-    }
-
-    public void addSaveButtonClickListener(ActionListener listener) {
-        saveButton.addActionListener(listener);
     }
 }
