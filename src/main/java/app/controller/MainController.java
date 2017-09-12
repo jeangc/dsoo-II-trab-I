@@ -5,7 +5,6 @@ import app.view.form.SettingsFormView;
 import app.view.list.PendingEntryListView;
 
 public class MainController {
-
     private MainView view;
 
     public MainController() {

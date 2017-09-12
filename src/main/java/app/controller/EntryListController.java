@@ -68,7 +68,7 @@ class EntryListController {
         EntryTotalPriceCalculator.calculate(SettingsEntity.getInstance(), entry);
 
         JFrame frame;
-        frame = FrameManager.showIntoNewFrame(new BillingFormView(entry), "Fechamento", new Dimension(500, 100));
+        frame = FrameManager.showIntoNewFrame(new BillingFormView(entry), "Fechamento", new Dimension(500, 120));
         frame.setResizable(false);
     }
 
