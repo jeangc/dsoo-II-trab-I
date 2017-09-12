@@ -24,6 +24,10 @@ public class FrameManager {
         frameTitlePrefix = prefix;
     }
 
+    static public JFrame showIntoMainFrame(Renderable r, String t, Dimension d) {
+        return showFrame(getMainFrame(), t, r, d);
+    }
+
     static public JFrame showIntoMainFrame(Renderable r, String t) {
         return showFrame(getMainFrame(), t, r);
     }
@@ -73,6 +77,8 @@ public class FrameManager {
         if (mainFrame == null) {
             mainFrame = createFrame();
         }
+
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         return mainFrame;
     }

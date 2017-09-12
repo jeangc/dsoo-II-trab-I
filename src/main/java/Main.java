@@ -1,11 +1,9 @@
 import app.FrameManager;
-import app.controller.EntryListController;
-import app.controller.SettingController;
+import app.controller.MainController;
 import app.entity.SettingsEntity;
-import app.view.form.SettingsFormView;
-import app.view.list.PendingEntryListView;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     final static private String LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
@@ -15,13 +13,14 @@ public class Main {
         initFrames();
         initDefaultSettings();
 
-        PendingEntryListView view = new EntryListController().getPendingList();
-        FrameManager.showIntoNewFrame(view, "Entradas pendentes");
-
-        SettingsFormView form = new SettingController().getSettingsForm();
-        FrameManager.showIntoNewFrame(form, "Configurações");
+        FrameManager.showIntoMainFrame(new MainController().getView(), "Bem vindo(a)", new Dimension(500, 500));
     }
 
+    /**
+     * Configurações padrão para o cálculo do ticket
+     * Considerando que a configuração é persistida na memória essa informações precisa ser definida
+     *   na inicialização do projeto
+     */
     private static void initDefaultSettings() {
         SettingsEntity s = SettingsEntity.getInstance();
         s.setToleranciaMinutos(5);
@@ -30,11 +29,17 @@ public class Main {
         s.setPeriodoInicialMinutos(10);
         s.setValorInicial(3);
     }
-    
+
+    /**
+     * Define um prefixo para as janelas
+     */
     private static void initFrames() {
         FrameManager.setFrameTitlePrefix("Sistema AUTO - ");
     }
 
+    /**
+     * Deixa as janelas bonitinhas no linux (fuck windows, yeah)
+     */
     private static void initLookAndFeel() {
         try {
             UIManager.setLookAndFeel(LOOK_AND_FEEL);
