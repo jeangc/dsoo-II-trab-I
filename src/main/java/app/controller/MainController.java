@@ -26,7 +26,7 @@ public class MainController {
     /**
      * Abre a página principal do sistema
      */
-    public void startControlPage() {
+    public void openControlDialogBox() {
         loadPendingList();
         FrameManager.showIntoMainFrame(pendingList, "Entradas pendentes");
     }

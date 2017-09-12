@@ -3,6 +3,7 @@ package app;
 import app.view.Renderable;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -52,6 +53,7 @@ public class FrameManager {
     }
     
     static private JFrame showFrame(JFrame frame, String t, Renderable r, Dimension d) {
+        addPanelPadding(r);
         frame.setTitle(frameTitlePrefix + " " + t);
         frame.setContentPane(r.getContainer());
         frame.setSize(d);
@@ -59,6 +61,12 @@ public class FrameManager {
         frame.pack();
         frame.setVisible(true);
         return frame;
+    }
+
+    static private void addPanelPadding(Renderable r) {
+        Border padding = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+        JPanel panel = (JPanel) r.getContainer();
+        panel.setBorder(padding);
     }
 
     static private JFrame getMainFrame() {

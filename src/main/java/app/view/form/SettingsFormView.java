@@ -19,27 +19,25 @@ public class SettingsFormView implements Renderable {
     private SettingsEntity settings;
 
     public SettingsFormView(SettingsEntity s) {
-        this.settings = s;
+        settings = s;
 
-        this.toleranciaValue.setText(String.valueOf(s.getToleranciaMinutos()));
-        this.periodoInicialValue.setText(String.valueOf(s.getPeriodoInicialMinutos()));
-        this.valorInicialValue.setText(String.valueOf(s.getValorInicial()));
-        this.periodoAdicionalValue.setText(String.valueOf(s.getPeriodoMinutos()));
-        this.valorAdicionalValue.setText(String.valueOf(s.getValorPeriodo()));
+        toleranciaValue.setText(String.valueOf(s.getToleranciaMinutos()));
+        periodoInicialValue.setText(String.valueOf(s.getPeriodoInicialMinutos()));
+        valorInicialValue.setText(String.valueOf(s.getValorInicial()));
+        periodoAdicionalValue.setText(String.valueOf(s.getPeriodoMinutos()));
+        valorAdicionalValue.setText(String.valueOf(s.getValorPeriodo()));
     }
 
-    public SettingsEntity getSettings() {
-        this.settings.setToleranciaMinutos(Integer.parseInt(this.toleranciaValue.getText()));
-        this.settings.setPeriodoInicialMinutos(Integer.parseInt(this.periodoInicialValue.getText()));
-        this.settings.setValorInicial(Integer.parseInt(this.valorInicialValue.getText()));
-        this.settings.setPeriodoMinutos(Integer.parseInt(this.periodoAdicionalValue.getText()));
-        this.settings.setValorPeriodo(Integer.parseInt(this.valorAdicionalValue.getText()));
-
-        return this.settings;
+    public void saveSettings() {
+        settings.setToleranciaMinutos(Integer.parseInt(toleranciaValue.getText()));
+        settings.setPeriodoInicialMinutos(Integer.parseInt(periodoInicialValue.getText()));
+        settings.setValorInicial(Float.parseFloat(valorInicialValue.getText()));
+        settings.setPeriodoMinutos(Integer.parseInt(periodoAdicionalValue.getText()));
+        settings.setValorPeriodo(Float.parseFloat(valorAdicionalValue.getText()));
     }
 
     public Container getContainer() {
-        return this.panel;
+        return panel;
     }
 
     public void addSaveButtonClickListener(ActionListener listener) {

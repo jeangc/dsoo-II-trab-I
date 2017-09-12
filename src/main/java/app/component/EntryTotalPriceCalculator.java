@@ -6,11 +6,11 @@ import app.entity.SettingsEntity;
 import java.sql.Timestamp;
 
 public class EntryTotalPriceCalculator {
-    static public void calculate(SettingsEntity s, EntryEntity entry) {
+    static public void calculate(SettingsEntity settings, EntryEntity entry) {
         float t = getPassedMinutes(entry.getEntrada());
 
         entry.setTempoTotal(t);
-        entry.setValorTotal(calculateValue(s, t));
+        entry.setValorTotal(calculateValue(settings, t));
     }
 
     static private float calculateValue(SettingsEntity s, float t) {
@@ -23,7 +23,7 @@ public class EntryTotalPriceCalculator {
         }
 
         float semInicial = t - s.getPeriodoInicialMinutos();
-        float periodos = (float) Math.ceil((float) semInicial / s.getPeriodoMinutos());
+        float periodos = (float) Math.ceil(semInicial / s.getPeriodoMinutos());
 
         return s.getValorInicial() + (s.getValorPeriodo() * periodos);
     }
