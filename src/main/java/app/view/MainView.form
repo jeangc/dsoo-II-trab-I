@@ -15,7 +15,7 @@
           </grid>
         </constraints>
         <properties>
-          <foreground color="-12828863"/>
+          <background color="-4473925"/>
         </properties>
         <border type="none"/>
         <children/>

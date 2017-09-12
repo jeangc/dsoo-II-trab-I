@@ -4,16 +4,18 @@ import app.entity.EntryEntity;
 import app.view.Renderable;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class NewFormView implements Renderable {
     private JPanel panel;
-    private JTextField placa;
+    private JFormattedTextField placa;
     private JButton saveButton;
 
     public EntryEntity getEntry() {
-        EntryEntity model = new EntryEntity();
+        EntryEntity model;
+        model = new EntryEntity();
         model.setPlaca(placa.getText());
 
         return model;
@@ -25,5 +27,13 @@ public class NewFormView implements Renderable {
 
     public void addSaveButtonClickListener(ActionListener listener) {
         saveButton.addActionListener(listener);
+    }
+
+    private void createUIComponents() {
+        try{
+            placa = new JFormattedTextField(new MaskFormatter("### ####"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
