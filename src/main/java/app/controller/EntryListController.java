@@ -13,22 +13,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainController {
+public class EntryListController {
     private EntryRepository entryRepository;
     private PendingEntryListView pendingList;
     private NewFormView newForm;
 
-    public MainController() {
+    public EntryListController() {
         entryRepository = new EntryRepository();
-        pendingList = createPendingList();
+
+        pendingList = new PendingEntryListView();
+        pendingList.addAddNewListener(new ActionListener() {
+            public void actionPerformed(ActionEvent clickTime)  {
+                openNewEntryDialogBox();
+            }
+        });
+        pendingList.addEntrySelectListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                openBillingDialogBox(pendingList.getSelectedEntry());
+            }
+        });
+
+        loadPendingList();
     }
 
-    /**
-     * Abre a página principal do sistema
-     */
-    public void openControlDialogBox() {
-        loadPendingList();
-        FrameManager.showIntoMainFrame(pendingList, "Entradas pendentes");
+    public PendingEntryListView getPendingList() {
+        return pendingList;
     }
 
     /**
@@ -63,24 +72,10 @@ public class MainController {
         frame.setResizable(false);
     }
 
+    /**
+     * Recarrega os dados da lista de entradas pendentes
+     */
     private void loadPendingList() {
         pendingList.load(entryRepository.getAll());
-    }
-
-    private PendingEntryListView createPendingList() {
-        PendingEntryListView l = new PendingEntryListView();
-
-        l.addAddNewListener(new ActionListener() {
-            public void actionPerformed(ActionEvent clickTime)  {
-                openNewEntryDialogBox();
-            }
-        });
-        l.addEntrySelectListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                openBillingDialogBox(pendingList.getSelectedEntry());
-            }
-        });
-
-        return l;
     }
 }

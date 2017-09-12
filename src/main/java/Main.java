@@ -1,6 +1,9 @@
 import app.FrameManager;
-import app.controller.MainController;
+import app.controller.EntryListController;
 import app.controller.SettingController;
+import app.entity.SettingsEntity;
+import app.view.form.SettingsFormView;
+import app.view.list.PendingEntryListView;
 
 import javax.swing.*;
 
@@ -10,11 +13,24 @@ public class Main {
     public static void main(String[] args) {
         initLookAndFeel();
         initFrames();
+        initDefaultSettings();
 
-        new MainController().openControlDialogBox();
-        new SettingController().openSettingsDialogBox();
+        PendingEntryListView view = new EntryListController().getPendingList();
+        FrameManager.showIntoNewFrame(view, "Entradas pendentes");
+
+        SettingsFormView form = new SettingController().getSettingsForm();
+        FrameManager.showIntoNewFrame(form, "Configurações");
     }
 
+    private static void initDefaultSettings() {
+        SettingsEntity s = SettingsEntity.getInstance();
+        s.setToleranciaMinutos(5);
+        s.setPeriodoMinutos(1);
+        s.setValorPeriodo(2);
+        s.setPeriodoInicialMinutos(10);
+        s.setValorInicial(3);
+    }
+    
     private static void initFrames() {
         FrameManager.setFrameTitlePrefix("Sistema AUTO - ");
     }
