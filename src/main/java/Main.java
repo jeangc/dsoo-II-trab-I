@@ -15,7 +15,7 @@ public class Main {
 
         JFrame frame;
         frame = FrameManager.showIntoMainFrame(new MainController().getView(), "Bem vindo(a)", new Dimension(600, 500));
-        frame.setResizable(false);
+        //FRAMe.setResizable(false);
     }
 
     /**
