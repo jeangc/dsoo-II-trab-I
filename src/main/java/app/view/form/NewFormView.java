@@ -31,7 +31,7 @@ public class NewFormView implements Renderable {
 
     private void createUIComponents() {
         try{
-            placa = new JFormattedTextField(new MaskFormatter("### ####"));
+            placa = new JFormattedTextField(new MaskFormatter("UUU ####"));
         } catch (Exception e){
             e.printStackTrace();
         }

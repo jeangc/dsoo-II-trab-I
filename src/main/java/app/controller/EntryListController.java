@@ -17,6 +17,7 @@ class EntryListController {
     private EntryRepository entryRepository;
     private PendingEntryListView pendingList;
     private NewFormView newForm;
+    private JFrame subFrame;
 
     EntryListController() {
         entryRepository = new EntryRepository();
@@ -47,14 +48,14 @@ class EntryListController {
         newForm = new NewFormView();
         newForm.addSaveButtonClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent clickTime)  {
+                subFrame.dispose();
                 entryRepository.create(newForm.getEntry());
                 loadPendingList();
             }
         });
 
-        JFrame frame;
-        frame = FrameManager.showIntoNewFrame(newForm, "Nova entrada", new Dimension(300, 100));
-        frame.setResizable(false);
+        subFrame = FrameManager.showIntoNewFrame(newForm, "Nova entrada", new Dimension(300, 100));
+        subFrame.setResizable(false);
     }
 
     /**
@@ -67,9 +68,8 @@ class EntryListController {
 
         EntryTotalPriceCalculator.calculate(SettingsEntity.getInstance(), entry);
 
-        JFrame frame;
-        frame = FrameManager.showIntoNewFrame(new BillingFormView(entry), "Fechamento", new Dimension(500, 120));
-        frame.setResizable(false);
+        subFrame = FrameManager.showIntoNewFrame(new BillingFormView(entry), "Fechamento", new Dimension(500, 120));
+        subFrame.setResizable(false);
     }
 
     /**
