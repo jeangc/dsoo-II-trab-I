@@ -1,18 +1,16 @@
 package app.controller;
 
-import app.FrameManager;
 import app.entity.SettingsEntity;
 import app.view.form.SettingsFormView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SettingController {
+class SettingController {
 
     private SettingsFormView settingsForm;
 
-    public SettingController() {
+    SettingController() {
         SettingsEntity settings = SettingsEntity.getInstance();
 
         settingsForm = new SettingsFormView(settings);
@@ -26,7 +24,7 @@ public class SettingController {
     /**
      * Abre a página principal do sistema
      */
-    public SettingsFormView getSettingsForm() {
+    SettingsFormView getSettingsForm() {
         return settingsForm;
     }
 }

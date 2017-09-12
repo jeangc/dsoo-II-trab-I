@@ -13,12 +13,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class EntryListController {
+class EntryListController {
     private EntryRepository entryRepository;
     private PendingEntryListView pendingList;
     private NewFormView newForm;
 
-    public EntryListController() {
+    EntryListController() {
         entryRepository = new EntryRepository();
 
         pendingList = new PendingEntryListView();
@@ -36,7 +36,7 @@ public class EntryListController {
         loadPendingList();
     }
 
-    public PendingEntryListView getPendingList() {
+    PendingEntryListView getPendingList() {
         return pendingList;
     }
 
